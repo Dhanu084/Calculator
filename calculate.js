@@ -19,7 +19,7 @@ buttons.addEventListener('click',function(event){
     else if(val=='='){
         operand2 = temp;
         var result= evaluate(operand1,operand2,operator);
-        if(result!=undefined)
+        if(result!=undefined||result=="0")
         temp = result;
         //console.log(result);
     }
@@ -46,7 +46,7 @@ buttons.addEventListener('click',function(event){
         else
         temp+=val;
     }
-    if(temp!="")
+    if(temp!=""||temp=="0")
     display.innerText = temp;
 });
 
