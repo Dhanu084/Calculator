@@ -38,13 +38,19 @@ buttons.addEventListener('click',function(event){
         
     }
     else{
-        if(temp.includes(".")){
+        if(temp!=""&&temp.includes(".")){
             var num = (parseFloat(temp).toFixed());
             console.log(num);
             temp=parseFloat(num+"."+val).toFixed(1);
         }
-        else
-        temp+=val;
+        else{
+            if(temp=="0"){
+                temp = val;
+            }else{
+                temp+=val;
+            }
+        }
+        
     }
     if(temp!=""||temp=="0")
     display.innerText = temp;
@@ -55,6 +61,7 @@ function evaluate(operand1,operand2,operator){
     if(operator==undefined||operand1==undefined||operand2==undefined) return ;
     var result = eval(operand1+" "+operator+" "+operand2);
     if(result == Infinity) return "ERROR!"
+    if(result==NaN) return "0";
     console.log(result);
     return result;
 }
